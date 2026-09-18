@@ -1,6 +1,5 @@
 ﻿using FreeLancer.Playwright;
 using FreeLancer.Settings;
-using Microsoft.Playwright;
 
 namespace FreeLancer
 {

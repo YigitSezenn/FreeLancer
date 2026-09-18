@@ -1,5 +1,6 @@
 ﻿using ManagedCode.Playwright.Stealth;
 using Microsoft.Playwright;
+
 namespace FreeLancer.Playwright
 {
     internal class PlaywrightBase
@@ -9,8 +10,9 @@ namespace FreeLancer.Playwright
         private IBrowserContext? _context;
 
         private static readonly string UserDataDir = Path.Combine(
-       Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-       "FreeLancer", "chrome-profile");
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "FreeLancer", "chrome-profile");
+
         public async Task<IPage> Browser()
         {
             if (_page is not null && !_page.IsClosed)
@@ -22,21 +24,18 @@ namespace FreeLancer.Playwright
             _context = await _playwright.Chromium.LaunchPersistentContextAsync(UserDataDir, new()
             {
                 Headless = false,
-                 Channel = "chrome",
+                Channel = "chrome",
                 ViewportSize = ViewportSize.NoViewport,
                 Args =
                 [
                     ..PlaywrightStealthExtensions.StealthArgs,
-                    "--start-maximized",    
+                    "--start-maximized",
                     "--disable-notifications"
                 ]
             });
 
             await _context.ApplyStealthAsync();
-
             _page = await _context.NewPageAsync();
-            
-
             return _page;
         }
 
@@ -49,7 +48,7 @@ namespace FreeLancer.Playwright
             _page = null;
             _context = null;
             _playwright = null;
-
         }
     }
 }
+

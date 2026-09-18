@@ -8,6 +8,7 @@ namespace FreeLancer.Settings
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "FreeLancer", "session.json");
 
+
         public string Email { get; set; } = "";
         public string Password { get; set; } = "";
         public bool IsLoggedIn { get; set; }
@@ -15,7 +16,6 @@ namespace FreeLancer.Settings
         public int HourlyRate { get; set; }
         public string WorkType { get; set; } = "";
         public string Work { get; set; } = "";
-
         public static AppSession Current { get; set; } = new();
 
         public static void Load()
@@ -27,6 +27,8 @@ namespace FreeLancer.Settings
             string jsonString = File.ReadAllText(FilePath);
             Current = JsonSerializer.Deserialize<AppSession>(jsonString)!;
         }
+
+   
 
         public static void Save()
         {

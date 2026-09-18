@@ -1,3 +1,4 @@
+using FreeLancer.Sessions;
 using FreeLancer.Settings;
 
 namespace FreeLancer
@@ -12,6 +13,7 @@ namespace FreeLancer
         {
             ApplicationConfiguration.Initialize();
             AppSession.Load();
+            Applied.Load();
             Application.Run(new Form1());
         }
     }
