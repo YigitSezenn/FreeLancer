@@ -17,6 +17,11 @@ namespace FreeLancer
             var workTypeIndex = cmb_JobType.Items.IndexOf(AppSession.Current.WorkType);
             cmb_JobType.SelectedIndex = workTypeIndex >= 0 ? workTypeIndex : 0;
             var Work = Aranacak_İs.Text = AppSession.Current.Work;
+            if (!string.IsNullOrEmpty(AppSession.Current.BasvuruMetni))
+                txt_basvuru_metni.Text = AppSession.Current.BasvuruMetni;
+
+            AraDurumunuGuncelle();
+
         }
 
         private void panel_content_Paint(object sender, PaintEventArgs e)
@@ -59,8 +64,31 @@ namespace FreeLancer
 
         }
 
+        private bool BasvuruMetniGecerli()
+        {
+            int uzunluk = txt_basvuru_metni.Text.Length;
+
+            if (uzunluk < 100)
+            {
+                MessageBox.Show("Başvuru metni en az 100 karakter olmalıdır.");
+                return false;
+            }
+
+            if (uzunluk > 2000)
+            {
+                MessageBox.Show("Başvuru metni en fazla 2000 karakter olabilir.");
+                return false;
+            }
+
+            return true;
+        }
+
         private async void button1_Click(object sender, EventArgs e)
         {
+            if (!BasvuruMetniGecerli())
+                return;
+
+           
             Ara.Enabled = false;
             try
             {
@@ -80,7 +108,7 @@ namespace FreeLancer
             }
             finally
             {
-                Ara.Enabled = true;
+                AraDurumunuGuncelle();
             }
         }
 
@@ -93,6 +121,15 @@ namespace FreeLancer
 
         private void Price_Info_Click(object sender, EventArgs e)
         {
+            if (!BasvuruMetniGecerli())
+                return;
+
+            if (string.IsNullOrWhiteSpace(Aranacak_İs.Text))
+            {
+                MessageBox.Show("Aranacak iş giriniz.");
+                return;
+            }
+
             int.TryParse(HourlyRate.Text, out int hourly);
             int.TryParse(FixedPrice.Text, out int fixedPrice);
 
@@ -104,7 +141,8 @@ namespace FreeLancer
                 HourlyRate = hourly,
                 FixedPrice = fixedPrice,
                 WorkType = cmb_JobType.SelectedItem?.ToString() ?? "",
-                Work = Aranacak_İs.Text.ToString() ?? ""
+                Work = Aranacak_İs.Text.ToString() ?? "",
+                BasvuruMetni = txt_basvuru_metni.Text
             };
             AppSession.Save();
             MessageBox.Show("Bilgiler Başarıyla Kayıt Edildi");
@@ -112,7 +150,29 @@ namespace FreeLancer
 
         private void Aranacak_İs_TextChanged(object sender, EventArgs e)
         {
+            AraDurumunuGuncelle();
+        }
 
+        private void AraDurumunuGuncelle()
+        {
+            bool length = !string.IsNullOrWhiteSpace(Aranacak_İs.Text);
+            Ara.Enabled = length;
+            Ara.Text = length ? "Ara" : "Aranacak iş giriniz";
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_basvuru_metni_TextChanged(object sender, EventArgs e)
+        {
+            int uzunluk = txt_basvuru_metni.Text.Length;
+
+            if (uzunluk >= 2000)
+            {
+                MessageBox.Show("2000 karakterden fazla yazılamaz");
+            }
         }
     }
 }

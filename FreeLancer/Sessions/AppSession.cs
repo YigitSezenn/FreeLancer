@@ -16,6 +16,7 @@ namespace FreeLancer.Settings
         public int HourlyRate { get; set; }
         public string WorkType { get; set; } = "";
         public string Work { get; set; } = "";
+        public string BasvuruMetni { get; set; } = "";
         public static AppSession Current { get; set; } = new();
 
         public static void Load()

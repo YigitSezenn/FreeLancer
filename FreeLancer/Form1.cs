@@ -40,7 +40,9 @@ namespace FreeLancer
                 IsLoggedIn = true,
                 FixedPrice = AppSession.Current.FixedPrice,
                 HourlyRate = AppSession.Current.HourlyRate,
-                WorkType = AppSession.Current.WorkType
+                WorkType = AppSession.Current.WorkType,
+                Work = AppSession.Current.Work,
+                BasvuruMetni = AppSession.Current.BasvuruMetni
             };
             AppSession.Save();
             OpenForm_2();
