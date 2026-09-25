@@ -32,8 +32,19 @@
             lbl_brand = new Label();
             lbl_title = new Label();
             panel_content = new Panel();
+            label1 = new Label();
+            Aranacak_İs = new TextBox();
+            Price_Info = new Button();
+            button1 = new Button();
+            Ara = new Button();
+            HourlyRate = new TextBox();
+            Hourly = new Label();
+            FixedPrice = new TextBox();
+            Fixed = new Label();
             lbl_jobType = new Label();
             cmb_JobType = new ComboBox();
+            lbl_basvuru = new Label();
+            txt_basvuru_metni = new TextBox();
             panel_header.SuspendLayout();
             panel_content.SuspendLayout();
             SuspendLayout();
@@ -46,7 +57,7 @@
             panel_header.Dock = DockStyle.Top;
             panel_header.Location = new Point(0, 0);
             panel_header.Name = "panel_header";
-            panel_header.Size = new Size(800, 72);
+            panel_header.Size = new Size(752, 84);
             panel_header.TabIndex = 0;
             // 
             // lbl_brand
@@ -74,13 +85,123 @@
             // panel_content
             // 
             panel_content.BackColor = Color.FromArgb(16, 48, 38);
+            panel_content.Controls.Add(txt_basvuru_metni);
+            panel_content.Controls.Add(lbl_basvuru);
+            panel_content.Controls.Add(label1);
+            panel_content.Controls.Add(Aranacak_İs);
+            panel_content.Controls.Add(Price_Info);
+            panel_content.Controls.Add(button1);
+            panel_content.Controls.Add(Ara);
+            panel_content.Controls.Add(HourlyRate);
+            panel_content.Controls.Add(Hourly);
+            panel_content.Controls.Add(FixedPrice);
+            panel_content.Controls.Add(Fixed);
             panel_content.Controls.Add(lbl_jobType);
             panel_content.Controls.Add(cmb_JobType);
-            panel_content.Location = new Point(24, 96);
+            panel_content.Location = new Point(0, 80);
             panel_content.Name = "panel_content";
-            panel_content.Size = new Size(752, 328);
+            panel_content.Size = new Size(778, 345);
             panel_content.TabIndex = 1;
             panel_content.Paint += panel_content_Paint;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.WhiteSmoke;
+            label1.Location = new Point(20, 193);
+            label1.Name = "label1";
+            label1.Size = new Size(67, 15);
+            label1.TabIndex = 12;
+            label1.Text = "Aranacak İş";
+            // 
+            // Aranacak_İs
+            // 
+            Aranacak_İs.BackColor = Color.FromArgb(16, 48, 38);
+            Aranacak_İs.ForeColor = Color.WhiteSmoke;
+            Aranacak_İs.Location = new Point(20, 216);
+            Aranacak_İs.Name = "Aranacak_İs";
+            Aranacak_İs.Size = new Size(280, 23);
+            Aranacak_İs.TabIndex = 11;
+            Aranacak_İs.Text = "Ornk : Developer";
+            Aranacak_İs.TextChanged += Aranacak_İs_TextChanged;
+            // 
+            // Price_Info
+            // 
+            Price_Info.BackColor = Color.FromArgb(16, 48, 38);
+            Price_Info.ForeColor = Color.WhiteSmoke;
+            Price_Info.Location = new Point(20, 245);
+            Price_Info.Name = "Price_Info";
+            Price_Info.Size = new Size(158, 23);
+            Price_Info.TabIndex = 10;
+            Price_Info.Text = "Bilgileri Kaydet";
+            Price_Info.UseVisualStyleBackColor = false;
+            Price_Info.Click += Price_Info_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(16, 48, 38);
+            button1.ForeColor = Color.WhiteSmoke;
+            button1.Location = new Point(407, 252);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 9;
+            button1.Text = "ÇıkışYap";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
+            // Ara
+            // 
+            Ara.BackColor = Color.FromArgb(16, 48, 38);
+            Ara.ForeColor = Color.WhiteSmoke;
+            Ara.Location = new Point(326, 252);
+            Ara.Name = "Ara";
+            Ara.Size = new Size(75, 23);
+            Ara.TabIndex = 7;
+            Ara.Text = "Ara";
+            Ara.UseVisualStyleBackColor = false;
+            Ara.Click += button1_Click;
+            // 
+            // HourlyRate
+            // 
+            HourlyRate.BackColor = Color.FromArgb(16, 48, 38);
+            HourlyRate.ForeColor = Color.WhiteSmoke;
+            HourlyRate.Location = new Point(24, 167);
+            HourlyRate.Name = "HourlyRate";
+            HourlyRate.Size = new Size(280, 23);
+            HourlyRate.TabIndex = 6;
+            HourlyRate.TextChanged += HourlyRate_TextChanged;
+            // 
+            // Hourly
+            // 
+            Hourly.AutoSize = true;
+            Hourly.ForeColor = Color.WhiteSmoke;
+            Hourly.Location = new Point(24, 149);
+            Hourly.Name = "Hourly";
+            Hourly.Size = new Size(71, 15);
+            Hourly.TabIndex = 5;
+            Hourly.Text = "Saatlik ücret";
+            Hourly.Click += Hourly_Click;
+            // 
+            // FixedPrice
+            // 
+            FixedPrice.BackColor = Color.FromArgb(16, 48, 38);
+            FixedPrice.ForeColor = Color.WhiteSmoke;
+            FixedPrice.Location = new Point(24, 110);
+            FixedPrice.Name = "FixedPrice";
+            FixedPrice.Size = new Size(280, 23);
+            FixedPrice.TabIndex = 4;
+            FixedPrice.TextChanged += FixedPrice_TextChanged;
+            // 
+            // Fixed
+            // 
+            Fixed.AutoSize = true;
+            Fixed.ForeColor = Color.White;
+            Fixed.Location = new Point(24, 92);
+            Fixed.Name = "Fixed";
+            Fixed.Size = new Size(58, 15);
+            Fixed.TabIndex = 3;
+            Fixed.Text = "SabitFiyat";
+            Fixed.Click += label1_Click;
             // 
             // lbl_jobType
             // 
@@ -108,13 +229,38 @@
             cmb_JobType.Name = "cmb_JobType";
             cmb_JobType.Size = new Size(280, 25);
             cmb_JobType.TabIndex = 1;
+            cmb_JobType.SelectedIndexChanged += cmb_JobType_SelectedIndexChanged;
+            // 
+            // lbl_basvuru
+            // 
+            lbl_basvuru.AutoSize = true;
+            lbl_basvuru.ForeColor = Color.WhiteSmoke;
+            lbl_basvuru.Location = new Point(338, 7);
+            lbl_basvuru.Name = "lbl_basvuru";
+            lbl_basvuru.Size = new Size(83, 15);
+            lbl_basvuru.TabIndex = 13;
+            lbl_basvuru.Text = "Başvuru Metni";
+            // 
+            // txt_basvuru_metni
+            // 
+            txt_basvuru_metni.BackColor = Color.FromArgb(16, 48, 38);
+            txt_basvuru_metni.ForeColor = Color.WhiteSmoke;
+            txt_basvuru_metni.Location = new Point(326, 28);
+            txt_basvuru_metni.MaxLength = 2000;
+            txt_basvuru_metni.Multiline = true;
+            txt_basvuru_metni.ScrollBars = ScrollBars.Vertical;
+            txt_basvuru_metni.Name = "txt_basvuru_metni";
+            txt_basvuru_metni.Size = new Size(423, 218);
+            txt_basvuru_metni.TabIndex = 14;
+            txt_basvuru_metni.Text = "Ornk : Developer";
+            txt_basvuru_metni.TextChanged += txt_basvuru_metni_TextChanged;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(12, 36, 28);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(752, 357);
             Controls.Add(panel_content);
             Controls.Add(panel_header);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -122,11 +268,14 @@
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Freelancer - İş Arama";
+            Load += Form2_Load;
             panel_header.ResumeLayout(false);
             panel_header.PerformLayout();
             panel_content.ResumeLayout(false);
             panel_content.PerformLayout();
             ResumeLayout(false);
+
+
         }
 
         #endregion
@@ -137,5 +286,16 @@
         private Panel panel_content;
         private Label lbl_jobType;
         private ComboBox cmb_JobType;
+        private TextBox FixedPrice;
+        private TextBox HourlyRate;
+        private Label Hourly;
+        private Label Fixed;
+        private Button Ara;
+        private Button button1;
+        private Button Price_Info;
+        private Label label1;
+        private TextBox Aranacak_İs;
+        private TextBox txt_basvuru_metni;
+        private Label lbl_basvuru;
     }
 }
